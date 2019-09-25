@@ -180,20 +180,20 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
 Detect fire in an imahge file
 
     ```
-    ./darknet detector test fire/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (1).jpg
+    ./darknet detector test fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (1).jpg
     ```
 ### Video
 
 * Detect fire in real-time video stream from webcam
 
     ```
-    ./darknet detector demo fire/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights
+    ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights
     ```
 
 * Test on video stream from file
 
     ```
-    ./darknet detector demo fire/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/videos/test.mp4
+    ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/videos/test.mp4
     ```
 
 
