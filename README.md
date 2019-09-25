@@ -156,12 +156,6 @@ The annotations need to be converted into YOLO format, which is :
 ./darknet detector train obj.data yolov3-tiny-obj.cfg fire/model/yolov3-tiny.conv.15
 ```
 
-5. Testing
-
-```
-./darknet detector test obj.data yolov3-tiny-obj.cfg backup/yolov3-tiny-obj_final.weights
-```
-
 6. Results
 
 ```bash
@@ -205,17 +199,17 @@ Detect fire in an imahge file
 
 There are weights-file for different cfg-files (smaller size -> faster speed & lower accuracy:
 
-    * `yolov3-openimages.cfg` (247 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-openimages.weights
+* `yolov3-openimages.cfg` (247 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-openimages.weights
 
-    * `yolov3-spp.cfg` (240 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-spp.weights
+* `yolov3-spp.cfg` (240 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-spp.weights
 
-    * `yolov3.cfg` (236 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3.weights
+* `yolov3.cfg` (236 MB COCO Yolo v3) - requires 4 GB GPU-RAM: https://pjreddie.com/media/files/yolov3.weights
 
-    * `yolov3-tiny.cfg` (34 MB COCO Yolo v3 tiny) - requires 1 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-tiny.weights
+* `yolov3-tiny.cfg` (34 MB COCO Yolo v3 tiny) - requires 1 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-tiny.weights
 
-    * `enet-coco.cfg` (EfficientNetb0-Yolo- 45.5% mAP@0.5 - 3.7 BFlops) 
-    
-    [`enetb0-coco_final.weights`](https://drive.google.com/file/d/1FlHeQjWEQVJt0ay1PVsiuuMzmtNyv36m/view) and `yolov3-tiny-prn.cfg` (33.1% mAP@0.5 - 3.5 BFlops - more)
+* `enet-coco.cfg` (EfficientNetb0-Yolo- 45.5% mAP@0.5 - 3.7 BFlops) 
+
+[`enetb0-coco_final.weights`](https://drive.google.com/file/d/1FlHeQjWEQVJt0ay1PVsiuuMzmtNyv36m/view) and `yolov3-tiny-prn.cfg` (33.1% mAP@0.5 - 3.5 BFlops - more)
 
 # Reference
 
