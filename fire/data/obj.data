@@ -1,0 +1,5 @@
+classes= 1
+train  = fire/data/train.txt
+valid  = fire/data/train.txt
+names = fire/data/obj.names
+backup = backup/
