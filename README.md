@@ -195,6 +195,7 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
 
 ## Test of the Trained Fire Detection Application
 (**Note**: You might want to recompile the DarkNet on your computer: Edit the ```Makefile.txt``` then run ```make```)
+
 ### Image
 
 Detect fire in an imahge file
