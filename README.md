@@ -10,17 +10,37 @@ The annotations need to be converted into YOLO format, which is :
 ```
 
 ## AI-lab
+Launch [AI-LAB](https://github.com/amineHY/AI-LAB)
 
+Pull AI-lab from Docker Hub
 
+```
+docker pull aminehy/ai-lab
+```
+Run the AI-lab and start your development
+```
+xhost +
+```
+then
+```
+docker run -it --rm
+--runtime=nvidia
+-v $(pwd):/workspace \
+-w /workspace \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+-e DISPLAY=$DISPLAY \
+-p 8888:8888 -p 6006:6006 aminehy/ai-lab:latest
+```
 
 ## Retrain YOLO on a Costum Dataset
 
 ![retrain_Yolo diagram](./fire/media/retrain_Yolo.png)
 
+
 ### YOLOv3
 
 1. Create a customized configuration file for YOLO model from  `cfg/yolov3.cfg`
-    
+
     ```
     cp cfg/yolov3.cfg yolov3-obj.cfg
     ```
@@ -61,7 +81,7 @@ The annotations need to be converted into YOLO format, which is :
 3. Create a file `train.txt` that lists paths of all annotated images (*.jpg) of the dataset `data/obj/`
 
     ```
-    train.txt 
+    train.txt
         data/obj/pic (132).jpg
         data/obj/img (42).jpg
         data/obj/img (90).jpg
@@ -74,16 +94,16 @@ The annotations need to be converted into YOLO format, which is :
         ...
 
     ```
-    
+
 
 4. Create `obj.names` and list the classes names
-    
+
     ```
     obj.names
         fire
     ```
 
-5. Create and setup a data file `obj.data` 
+5. Create and setup a data file `obj.data`
 
     ```
     obj.data
@@ -102,7 +122,7 @@ The annotations need to be converted into YOLO format, which is :
     ./darknet detector train yolov3-obj.cfg obj.data darknet53.conv.74
     ```
 
-8. test: 
+8. test:
 ```
 ./darknet detector test obj.data  yolov3-obj.cfg backup/yolov3-obj_final.weights
 ```
@@ -174,14 +194,18 @@ Saving weights to backup//yolov3-tiny-obj_final.weights
 
 
 ## Test of the Trained Fire Detection Application
-
+(**Note**: You might want to recompile the DarkNet on your computer: Edit the ```Makefile.txt``` then run ```make```)
 ### Image
- 
+
 Detect fire in an imahge file
 
     ```
-    ./darknet detector test fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (1).jpg
+    ./darknet detector test fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/data/obj/img (9).jpg
     ```
+
+![Results](./fire/media/predictions.jpg)
+
+
 ### Video
 
 * Detect fire in real-time video stream from webcam
@@ -189,14 +213,18 @@ Detect fire in an imahge file
     ```
     ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights
     ```
+   **Note**: add the option to save the output video: -out_filename filename.mp4
 
 * Test on video stream from file
 
     ```
     ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/videos/test.mp4
     ```
+* Example:
 
-
+    ```bash
+    ./darknet detector demo fire/data/obj.data fire/cfg/yolov3-tiny-obj.cfg fire/model/yolov3-tiny-obj_final.weights fire/videos/DJI_0070.MOV -out_filename ./fire/videos/DJI_0070_output.mp4
+    ```
 
 # Pre-trained Models
 
@@ -210,7 +238,7 @@ There are weights-file for different cfg-files (smaller size -> faster speed & l
 
 * `yolov3-tiny.cfg` (34 MB COCO Yolo v3 tiny) - requires 1 GB GPU-RAM: https://pjreddie.com/media/files/yolov3-tiny.weights
 
-* `enet-coco.cfg` (EfficientNetb0-Yolo- 45.5% mAP@0.5 - 3.7 BFlops) 
+* `enet-coco.cfg` (EfficientNetb0-Yolo- 45.5% mAP@0.5 - 3.7 BFlops)
 
 [`enetb0-coco_final.weights`](https://drive.google.com/file/d/1FlHeQjWEQVJt0ay1PVsiuuMzmtNyv36m/view) and `yolov3-tiny-prn.cfg` (33.1% mAP@0.5 - 3.5 BFlops - more)
 
